@@ -27,13 +27,5 @@ public class PracticalTest01Var06SecondaryActivity extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        switch (requestCode) {
-            case Constants.FIRST_ACTIVITY_CODE:
-                setResult(resultCode, new Intent());
-                finish();
-                break;
-        }
-    }
+
 }

@@ -50,7 +50,7 @@ public class PracticalTest01VarMain06 extends AppCompatActivity {
     private class EditTextClickListener implements TextWatcher {
         @Override
         public  void onTextChanged (CharSequence s, int start, int before, int count){
-            if(s.subSequence(0,3)=="http")
+            if(s.toString().startsWith("http"))
                 pressButton.setBackground(getApplicationContext().getResources().getDrawable(R.color.green));
 
         }
@@ -74,13 +74,14 @@ public class PracticalTest01VarMain06 extends AppCompatActivity {
         savedInstanceState.putString(Constants.WEBSITE_EDIT_TEXT, String.valueOf(websiteEditText.getText()));
 
     }
+    private NavigateButtonClickListener navigateButtonClickListener = new NavigateButtonClickListener();
     private class NavigateButtonClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
 
 
-                Intent intent = new Intent(Constants.FIRST_ACTIVITY);
+                Intent intent = new Intent(getApplicationContext(), PracticalTest01Var06SecondaryActivity.class);
 
                 startActivityForResult(intent, Constants.FIRST_ACTIVITY_CODE);
 
@@ -95,6 +96,9 @@ public class PracticalTest01VarMain06 extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         additionalFieldsContainer = (LinearLayout)findViewById(R.id.additional_fields_container);
+        showHideAdditionalFieldsButton = (Button)findViewById(R.id.show_hide_button);
+        showHideAdditionalFieldsButton.setOnClickListener(showHideAdditionalFieldsButtonClickListener);
+
 
        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +114,9 @@ public class PracticalTest01VarMain06 extends AppCompatActivity {
 
         pressButton = (Button)findViewById(R.id.press_button);
         pressButton.setBackground(getApplicationContext().getResources().getDrawable(R.color.red));
+
+        navigateButton = (Button)findViewById(R.id.navigate_button);
+        navigateButton.setOnClickListener(navigateButtonClickListener);
 
         if ((savedInstanceState != null) && (savedInstanceState.getString(Constants.USERNAME_EDIT_TEXT) != null)) {
             nameEditText.setText(savedInstanceState.getString(Constants.USERNAME_EDIT_TEXT));
@@ -153,5 +160,14 @@ public class PracticalTest01VarMain06 extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        switch (requestCode) {
+            case Constants.FIRST_ACTIVITY_CODE:
+               Toast.makeText(this, "ceva", Toast.LENGTH_LONG).show();
+                break;
+        }
     }
 }
