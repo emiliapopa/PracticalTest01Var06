@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PracticalTest01Var06</string>
+    <string name="action_settings">Settings</string>
+    <string name="show_additional_fields">Show additional fields</string>
+    <string name="hide_additional_fields">Less detail</string>
+    <string name="name">Perfect student</string>
+    <string name="website">Website</string>
+    <string name="navigate_button">Navigate to secondary activity</string>
+    <string name="pass_button">Pass</string>
+    <string name="title_activity_practical_test01_var06_secondary">
+        PracticalTest01Var06SecondaryActivity
+    </string>
+</resources>
